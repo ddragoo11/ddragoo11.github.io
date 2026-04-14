@@ -124,7 +124,9 @@
             <h2 class="section-title mb-3" data-aos="fade-up" data-aos-delay="">Projects</h2>
           </div>
         </div>
-        <div class="row">
+
+        <!-- Birthday Paradox Project -->
+        <div class="row border-bottom pb-5 mb-5">
           <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
           
             <img src="images/Screenshot 2026-02-25 095758.png" alt="Percentage of people sharing birthdays!" class="img-fluid">
@@ -157,18 +159,70 @@
 
               This project helped me improve at turning a math concept into a working program and explaining it to a non-technical audience. I also got better at 
               writing cleaner code, testing logic that involves randomness, and thinking about software as something you communicate to people, not just something 
-              that “runs.”
-
-
+              that "runs."
             </div>
-
-            
-
           </div>
         </div>
-      </div>
-      
 
+        <!-- Elevator Simulator Project -->
+        <div class="row">
+          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
+            <img src="images/elevator_uml.png" alt="Elevator Simulator UML Diagram" class="img-fluid">
+          </div>
+          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
+            <div class="mb-4">
+              <h3>Elevator Simulator</h3>
+              <p>
+                Have you ever wondered how elevator systems decide which elevator to send when you press the button? 
+                This project is a simulation of a real building elevator system that models how different types of elevators 
+                operate and how a scheduling system assigns calls to them. Built entirely in Java, this project challenged us 
+                to think deeply about software design, teamwork, and writing clean, testable code.
+              </p>
+
+              <p><strong>What does it do?</strong></p>
+              <p>
+                The simulator takes in a building configuration — the number of floors, the types and number of elevators, 
+                a scheduling strategy, and a file of elevator calls. It then runs the simulation round by round, with the 
+                scheduler assigning calls to elevators and each elevator moving one floor at a time toward its destination. 
+                The simulation supports four elevator types — Standard, Freight, PentHouse, and Express — each with their 
+                own rules for which calls they can accept. Two scheduling strategies are available: a Simple scheduler that 
+                assigns calls to the first available elevator from left to right, and a Complex scheduler that finds the 
+                closest available elevator to minimize wait time. The simulation ends when all calls have been answered and 
+                every elevator has returned to the ground floor, printing the state of the building each round.
+              </p>
+
+              <p><strong>Design</strong></p>
+              <p>
+                The project was designed around the four pillars of object-oriented programming and SOLID principles. We used 
+                abstraction and inheritance by creating an abstract Elevator class that defines shared state and behavior, with 
+                each elevator subclass implementing its own call acceptance policy — this is polymorphism in action. The Scheduler 
+                interface follows the Open/Closed Principle since new scheduling strategies can be added without modifying existing 
+                code, and the Dependency Inversion Principle since the Simulator depends on the Scheduler interface rather than any 
+                concrete implementation.
+              </p>
+
+              <p><strong>Implementation</strong></p>
+              <p>
+                My responsibilities on this project included implementing the Call class, the Building class, the SimpleScheduler, 
+                and the ComplexScheduler. I followed a strict test-driven development process for each class — writing a failing test 
+                first, implementing just enough code to make it pass, then committing and repeating. I used Mockito to mock Elevator 
+                objects in my scheduler tests, which allowed me to test my scheduling logic completely independently from my partner's 
+                elevator implementations. This was a valuable experience in writing decoupled, testable code. 
+                You can view the full project on GitHub here: <a href="https://github.com/usd-comp-305/project-03-elevator-dakota-and-juliet" target="_blank">GitHub Repository</a>
+              </p>
+
+              <p><strong>What I Learned</strong></p>
+              <p>
+                This project significantly improved my understanding of object-oriented design and how the SOLID principles apply in 
+                practice rather than just in theory. Working through test-driven development showed me how writing tests first actually 
+                leads to cleaner, more focused code. I also got much more comfortable with Git workflows — branching, pull requests, 
+                and code reviews — which are skills I know I'll use in every future project.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
 
 
@@ -180,11 +234,6 @@
           </div>
         </div>
         <div class="row mb-5 text-center">
-
-
-
-          
-          
           <div class="col-md-12 text-center">
             <p class="mb-0">
               <span class="icon-mail_outline d-block h4 text-primary"></span>
@@ -234,7 +283,6 @@
   <script src="js/jquery.sticky.js"></script>
   <script src="js/isotope.pkgd.min.js"></script>
   <script src="js/collapsable.js"></script>
-
 
   <script src="js/main.js"></script>
 
