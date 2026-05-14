@@ -263,9 +263,7 @@
                 behaviors to be injected at runtime. The payment system uses a <code>PaymentMethod</code> interface 
                 implemented by three concrete classes, each handling its own validation. The servicer hierarchy uses 
                 inheritance and polymorphism — when a booking is confirmed, the right service runs automatically based 
-                on which concrete servicer type was created, with no conditional checks needed in the controller. A 
-                Factory Method pattern centralizes servicer object creation so adding a new servicer type in the future 
-                requires minimal changes.
+                on which concrete servicer type was created, with no conditional checks needed in the controller.
               </p>
 
               <p><strong>My Implementation</strong></p>
