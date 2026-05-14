@@ -165,7 +165,7 @@
         </div>
 
         <!-- Elevator Simulator Project -->
-        <div class="row">
+        <div class="row border-bottom pb-5 mb-5">
           <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
             <img src="images/elevator_uml.jpg" alt="Elevator Simulator UML Diagram" class="img-fluid" style ="min-height: 400px; object-fit: contain;">
           </div>
@@ -217,6 +217,75 @@
                 practice rather than just in theory. Working through test-driven development showed me how writing tests first actually 
                 leads to cleaner, more focused code. I also got much more comfortable with Git workflows — branching, pull requests, 
                 and code reviews — which are skills I know I'll use in every future project.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- UberCuts Project -->
+        <div class="row border-bottom pb-5 mb-5">
+          <div class="col-lg-6 mb-5" data-aos="fade-up" data-aos-delay="">
+            <img src="images/ubercuts_uml.png" alt="UberCuts UML Class Diagram" class="img-fluid" style="min-height: 400px; object-fit: contain;">
+          </div>
+          <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
+            <div class="mb-4">
+              <h3>UberCuts</h3>
+
+              <p>
+                Booking a haircut, manicure, or styling appointment usually means jumping between apps, scrolling through 
+                websites, or just calling around until someone picks up. For students especially, finding affordable local 
+                servicers without a big platform taking a cut is frustrating. UberCuts started as a class project but was 
+                designed around a real problem — what if there was a lightweight, direct way to connect customers with 
+                independent barbers, nail techs, and stylists? No middleman, no subscription fee, just a clean interface 
+                that gets you from browsing to booked.
+              </p>
+
+              <p><strong>What does it do?</strong></p>
+              <p>
+                UberCuts is a console-based booking application where both customers and servicers can create accounts and 
+                interact with each other through a menu-driven interface. As a customer you can browse all available listings, 
+                filter them by price or service type, select a provider, and pay using cash, credit card, or Venmo — all from 
+                the same session. The app walks you through every step, re-prompts you if you make a mistake, and confirms 
+                your booking once payment goes through. As a servicer you can create an account, add the services you offer 
+                with custom pricing, post listings that customers can browse, view your active listings, and update your 
+                availability at any time. Once a customer books and pays, the service is performed and confirmed in the app.
+              </p>
+
+              <p><strong>Design</strong></p>
+              <p>
+                UberCuts is built in Java and follows the Model-View-Controller architectural pattern, separating the 
+                application into three distinct layers. The model handles all business logic and data. The view handles 
+                everything the user sees and interacts with. The controller sits in the middle, reading input from the 
+                view and coordinating the model. One of the most important design decisions was introducing a 
+                <code>View</code> interface so the controller depends on an abstraction rather than a specific terminal 
+                implementation — meaning the entire display layer could be swapped out for a graphical interface without 
+                touching the controller at all. The display layer uses the Strategy pattern, allowing different display 
+                behaviors to be injected at runtime. The payment system uses a <code>PaymentMethod</code> interface 
+                implemented by three concrete classes, each handling its own validation. The servicer hierarchy uses 
+                inheritance and polymorphism — when a booking is confirmed, the right service runs automatically based 
+                on which concrete servicer type was created, with no conditional checks needed in the controller. A 
+                Factory Method pattern centralizes servicer object creation so adding a new servicer type in the future 
+                requires minimal changes.
+              </p>
+
+              <p><strong>My Implementation</strong></p>
+              <p>
+                My responsibilities covered the controller, the view layer, the display strategy pattern, and the entry 
+                point. I designed and implemented <code>AppController</code>, which is the heart of the application's 
+                flow. I was deliberate about keeping all output out of the controller — every print statement in the 
+                application lives in <code>TerminalView</code>, never in <code>AppController</code>. The controller 
+                only calls <code>view.display()</code> and <code>view.prompt()</code>, a design decision guided by the 
+                Single Responsibility Principle and clean MVC separation. I also introduced 
+                <code>promptUntilValid()</code>, a helper method that uses Java's <code>Consumer&lt;String&gt;</code> 
+                functional interface to eliminate repeated retry loop code — any setter method can be passed to it as 
+                a method reference, keeping the code DRY and readable. I also implemented the <code>View</code> 
+                interface, <code>TerminalView</code>, both display strategies, both legacy views, and the 
+                <code>Simulation</code> entry point. The project used feature branching with pull requests, Checkstyle 
+                and SpotBugs for automated code quality checks on every push through GitHub Actions, and a full JUnit 
+                and Mockito test suite covering every public and package-private method in the controller. Tests use a 
+                mocked <code>TerminalView</code> with chained prompt responses to simulate user input without needing 
+                a real console.
+                You can view the full project on GitHub here: <a href="https://github.com/usd-comp-305/project-04-dakota-juliet-jake" target="_blank">GitHub Repository</a>
               </p>
             </div>
           </div>
